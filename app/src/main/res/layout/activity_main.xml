@@ -11,15 +11,14 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:gravity="center"
-        android:text="Sender"
-        android:textSize="30dp" />
+        android:text="XML 문자 보내기"
+        android:textSize="32dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginStart="50dp">
-
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,16 +26,22 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Time Count"
-                android:textStyle="bold"/>
+                android:text="Time Count  :  "
+                android:textStyle="bold"
+                android:layout_weight="4"
+                android:gravity="end"/>
 
             <EditText
                 android:id="@+id/etTimeCount"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="timecount" />
+                android:layout_marginRight="40dp"
+                android:hint="숫자를 입력하세요"
+                android:inputType="number"
+                android:layout_weight="7"
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -46,17 +51,22 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Time Kinds"
+                android:text="Time Kinds  :  "
                 android:textStyle="bold"
+                android:layout_weight="4"
+                android:gravity="end"
                 />
 
             <EditText
                 android:id="@+id/etTimeKinds"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_marginRight="40dp"
                 android:layout_height="wrap_content"
-                android:hint="timekinds" />
+                android:maxLines="1"
+                android:hint="s:초, m:분, h:시간"
+                android:layout_weight="7"/>
         </LinearLayout>
 
         <LinearLayout
@@ -66,16 +76,21 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Repeat Count"
-                android:textStyle="bold"/>
+                android:text="Repeat Count  :  "
+                android:textStyle="bold"
+                android:layout_weight="4"
+                android:gravity="end"/>
 
             <EditText
                 android:id="@+id/etRepeatCount"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_marginRight="40dp"
                 android:layout_height="wrap_content"
-                android:hint="repeatcount" />
+                android:hint="반복 횟수를 입력하세요"
+                android:inputType="number"
+                android:layout_weight="7"/>
         </LinearLayout>
 
         <LinearLayout
@@ -85,22 +100,32 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Message"
-                android:textStyle="bold"/>
+                android:text="Message  :  "
+                android:textStyle="bold"
+                android:layout_weight="4"
+                android:gravity="end"/>
 
             <EditText
                 android:id="@+id/etMessage"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_marginRight="40dp"
                 android:layout_height="wrap_content"
-                android:hint="message" />
+                android:hint="보내실 내용을 입력하세요"
+                android:layout_weight="7"/>
         </LinearLayout>
 
         <Button
             android:id="@+id/btnSendSMS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="보내기" />
+            android:paddingLeft="80dp"
+            android:paddingRight="80dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:text="보 내 기" />
     </LinearLayout>
 </LinearLayout>

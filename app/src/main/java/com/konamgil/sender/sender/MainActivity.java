@@ -63,10 +63,14 @@ public class MainActivity extends AppCompatActivity {
     private String resultXml(){
 
         String stTimeCount = etTimeCount.getText().toString();
-        String stTimeKinds = etTimeKinds.getText().toString();
+        String stTimeKinds = etTimeKinds.getText().toString().trim();
         String stRepeatCount = etRepeatCount.getText().toString();
         String stMessage = etMessage.getText().toString();
+        /**
+         * xml 파싱하기
+         */
         mXmlHelper = new XmlHelper(stTimeCount, stTimeKinds, stRepeatCount, stMessage, mContext);
+        //
         String result = mXmlHelper.getXmlData();
         return result;
     }
@@ -77,10 +81,60 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             String phoneNumber = "01072553466";
-            String smsText = resultXml();
-            SendSMS(phoneNumber, smsText );
+
+            if(isKind(etTimeKinds.getText().toString().trim())){
+                String smsText = resultXml();
+                SendSMS(phoneNumber, smsText );
+            } else {
+                Toast.makeText(mContext,"올바른 시간종류를 입력하세요",Toast.LENGTH_SHORT).show();
+            }
         }
     };
+
+    /**
+     * kinds 조사
+     * @param str
+     * @return
+     */
+    public boolean isKind(String str){
+        boolean result;
+        switch (str.toLowerCase()){
+            case "s":
+                result = true;
+                break;
+            case "m":
+                result = true;
+                break;
+            case "h":
+                result = true;
+                break;
+            default:
+                result = false;
+                break;
+        }
+        return result;
+    }
+
+    /**
+     * 숫자 유효성 체크
+     * @param str
+     * @return
+     */
+    public boolean isNumber(String str) {
+        //먼저 유효성 체크
+        if(str==null || str.equals("")) {
+            Toast.makeText(mContext,"빈칸을 입력해주세요",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        for(int i=0; i<str.length(); i++) {
+            char ch = str.charAt(i);
+
+            if(ch<'0' || ch>'9') {
+                return false;
+            }
+        }
+        return true;
+    }
 
     /**
      * 장문 메시지는 이 메소드를 이용해야함
@@ -123,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (getResultCode()) {
                     case Activity.RESULT_OK:
                         // 전송 성공
-                        Toast.makeText(mContext, "전송 완료", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "문자가 수신되었습니다", Toast.LENGTH_SHORT).show();
                         break;
                     case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
                         // 전송 실패
